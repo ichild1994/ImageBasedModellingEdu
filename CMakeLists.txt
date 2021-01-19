@@ -9,7 +9,7 @@ add_definitions(-DEIGEN_USE_NEW_STDVECTOR -DEIGEN_YES_I_KNOW_SPARSE_MODULE_IS_NO
 
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-fPIC")
+set(CMAKE_CXX_FLAGS "-fPIC -g")
 
 add_subdirectory(core)
 add_subdirectory(util)

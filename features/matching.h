@@ -119,7 +119,7 @@ Matching::oneway_match (Options const& options,
     std::vector<int>* result)
 {
     result->clear();
-    result->resize(set_1_size, -1);
+    result->resize(set_1_size, -1);  // -1 means no matched!
     if (set_1_size == 0 || set_2_size == 0)
         return;
 
@@ -164,12 +164,15 @@ Matching::oneway_match (Options const& options,
                /*                  */
                /*    此处添加代码    */
                /*                  */
-        /*******************************10696_10015b911522757f6?bizid=10696&txSecret=63384d4bd569e29729b6995dd8a9eefb&txTime=5B93EFB6**********************************/
 
+
+        /*******************************10696_10015b911522757f6?bizid=10696&txSecret=63384d4bd569e29729b6995dd8a9eefb&txTime=5B93EFB6**********************************/
+        /*
         if (static_cast<float>(nn_result.dist_1st_best)
             / static_cast<float>(nn_result.dist_2nd_best)
             > MATH_POW2(options.lowe_ratio_threshold))
             continue;
+        */
         // 匹配成功，feature set1 中第i个特征值对应feature set2中的第index_1st_best个特征点
         result->at(i) = nn_result.index_1st_best;
     }

@@ -12,6 +12,7 @@
 #include <fstream>
 #include <sstream>
 #include <set>
+#include <assert.h>
 #include <util/system.h>
 #include <sfm/ransac_fundamental.h>
 #include "math/functions.h"
@@ -40,6 +41,9 @@ int  calc_ransac_iterations (double p,
 
     /** TODO HERE
      * Coding here**/
+    double m = std::log(1.0 - z) / std::log(1.0 - std::pow(p,K));
+    if(m > 0) return std::ceil(m);
+
     return 0;
 
 
@@ -174,6 +178,31 @@ std::vector<int> find_inliers(sfm::Correspondences2D2D const & matches
      * TODO HERE
      *
      * Coding here **/
+    
+    
+    int pairNum = matches.size();
+    for(int i = 0; i < pairNum; ++i) {
+        double u1 = matches[i].p1[0], v1 = matches[i].p1[1];
+        double u2 = matches[i].p2[0], v2 = matches[i].p2[1];
+        double Fx1[3];
+        Fx1[0] = F(0, 0) * u1 + F(0, 1) * v1 + F(0, 2) * 1.0;
+        Fx1[1] = F(1, 0) * u1 + F(1, 1) * v1 + F(1, 2) * 1.0; 
+        Fx1[2] = F(2, 0) * u1 + F(2, 1) * v1 + F(2, 2) * 1.0;
+        double Ftx2[3];
+        Ftx2[0] = F(0, 0) * u2 + F(1, 0) * v2 + F(2, 0) * 1.0;
+        Ftx2[1] = F(0, 1) * u2 + F(1, 1) * v2 + F(2, 1) * 1.0; 
+        Ftx2[2] = F(0, 2) * u2 + F(1, 2) * v2 + F(2, 2) * 1.0; 
+        double err = Fx1[0] * u2 + Fx1[1] * v2 + Fx1[2] * 1.0;
+        double JJt = Fx1[0] * Fx1[0] + Fx1[1] * Fx1[1] + Ftx2[0] * Ftx2[0] + Ftx2[1] * Ftx2[1];
+        double sampson_err = 0.0;
+        if(JJt > 1e-10) {
+            sampson_err = err * err / JJt;
+        }
+        if(sampson_err < squared_thresh) {
+            inliers.emplace_back(i);
+        }
+    }
+    
 
     /** Reference
     for(int i=0; i< matches.size(); i++){

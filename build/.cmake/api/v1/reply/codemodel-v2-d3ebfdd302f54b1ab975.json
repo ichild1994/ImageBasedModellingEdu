@@ -1,0 +1,487 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						8,
+						9,
+						10,
+						11,
+						12
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "core",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "core",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "util",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "util",
+					"targetIndexes" : 
+					[
+						15
+					]
+				},
+				{
+					"build" : "features",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "features",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "sfm",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "sfm",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "mvs",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "mvs",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "examples",
+					"childIndexes" : 
+					[
+						7
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "examples"
+				},
+				{
+					"build" : "examples/task1",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 6,
+					"source" : "examples/task1",
+					"targetIndexes" : 
+					[
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"build" : "surface",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "surface",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "texturing",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "texturing",
+					"targetIndexes" : 
+					[
+						14
+					]
+				},
+				{
+					"build" : "3rdParty/mrf",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "3rdParty/mrf",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "3rdParty/coldet",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "3rdParty/coldet",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "3rdParty/gco",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 10,
+					"source" : "3rdParty/gco",
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						6,
+						10
+					],
+					"name" : "ImageBasedModellingEdu",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "core",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "util",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						15
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "features",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "sfm",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "mvs",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "class2",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "surface",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "texturing",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						14
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "ColDet",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						12
+					],
+					"name" : "GraphCutOptimization",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 11,
+					"id" : "coldet::@ba7fb69ded106d778d5e",
+					"jsonFile" : "target-coldet-84420c9acf857ef2cf4a.json",
+					"name" : "coldet",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "core::@57760688d1f824db5d9c",
+					"jsonFile" : "target-core-396c21e32714e29cad2f.json",
+					"name" : "core",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "features::@cffcd35d6b873d202df2",
+					"jsonFile" : "target-features-a2895dae1f543243726f.json",
+					"name" : "features",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "gco::@854f9c7ef0f643da7fc4",
+					"jsonFile" : "target-gco-456a755da882ff9180e4.json",
+					"name" : "gco",
+					"projectIndex" : 10
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "mrf::@14964b3ac83e2315390e",
+					"jsonFile" : "target-mrf-54e6b08bd071ff927245.json",
+					"name" : "mrf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "mvs::@0b51f659e57384fdfd7b",
+					"jsonFile" : "target-mvs-c4368f124304dc267b8a.json",
+					"name" : "mvs",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "sfm::@3dfa56a8926accfc664d",
+					"jsonFile" : "target-sfm-be0d91fb8f6a9f531ae4.json",
+					"name" : "sfm",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "surface::@f3996673b349dd6d65d9",
+					"jsonFile" : "target-surface-351910a9fe8316d2dbed.json",
+					"name" : "surface",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task1_test_math_basic::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task1_test_math_basic-f7c3c4bb5203e677f8f4.json",
+					"name" : "task1_test_math_basic",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task2_test_camera_model::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task2_test_camera_model-46c128714c31e44cfe0b.json",
+					"name" : "task2_test_camera_model",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task3_test_feature_matching::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task3_test_feature_matching-1b1407de9047146404b2.json",
+					"name" : "task3_test_feature_matching",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task4_test_fundamental_8_point::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task4_test_fundamental_8_point-fc3be1e6382ec4ef5560.json",
+					"name" : "task4_test_fundamental_8_point",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task5_test_fundamental_ransac::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task5_test_fundamental_ransac-ac91ebc2b8c0be19e09c.json",
+					"name" : "task5_test_fundamental_ransac",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "task6_test_pose_from_fundamental::@12b18fe88344707e1da6",
+					"jsonFile" : "target-task6_test_pose_from_fundamental-173a5b66f5ee5dac1ee4.json",
+					"name" : "task6_test_pose_from_fundamental",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "texturing::@b2997b6333c917a82321",
+					"jsonFile" : "target-texturing-dde0b56cbbbdc885c3d7.json",
+					"name" : "texturing",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "util::@5865449b717dd869d2cd",
+					"jsonFile" : "target-util-bd13312fb12e571b5d09.json",
+					"name" : "util",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/lizailin/project/ImageBasedModeling/ImageBasedModellingEdu/build",
+		"source" : "/home/lizailin/project/ImageBasedModeling/ImageBasedModellingEdu"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}
