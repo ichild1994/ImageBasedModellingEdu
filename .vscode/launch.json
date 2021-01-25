@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/examples/task1/task5_test_fundamental_ransac",
+            "program": "${workspaceFolder}/build/examples/task2/task2-2_test_p3p_kneip",
             "args":[], //["${workspaceFolder}/examples/data/kxm1.jpg", "${workspaceFolder}/examples/data/kxm2.jpg"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

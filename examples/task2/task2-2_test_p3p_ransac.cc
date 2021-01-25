@@ -44,6 +44,7 @@ int main(int argc, char* argv[]){
 
     // Ransac中止条件，内点阈判断
     sfm::RansacPoseP3P::Options pose_p3p_opts;
+    pose_p3p_opts.verbose_output = true;
     // Ransac估计相机姿态
     sfm::RansacPoseP3P::Result ransac_result;
     sfm::RansacPoseP3P ransac(pose_p3p_opts);

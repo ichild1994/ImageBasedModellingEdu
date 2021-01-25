@@ -2,6 +2,8 @@
 #include <sfm/ransac_fundamental.h>
 #include <core/image_exif.h>
 #include <fstream>
+#include <assert.h>
+
 #include "math/matrix.h"
 #include "math/vector.h"
 
@@ -322,8 +324,8 @@ main (int argc, char *argv[])
     // ba优化
     sfm::ba::BundleAdjustment::Options ba_opts;
     ba_opts.verbose_output = true;
-    ba_opts.lm_mse_threshold = 1e-16;
-    ba_opts.lm_delta_threshold = 1e-8;
+    ba_opts.lm_mse_threshold = 1e-10;
+    ba_opts.lm_delta_threshold = 1e-2;
     sfm::ba::BundleAdjustment ba(ba_opts);
     ba.set_cameras(&cams);
     ba.set_points(&p3ds);
