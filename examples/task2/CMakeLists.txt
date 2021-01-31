@@ -5,8 +5,7 @@ set(CMAKE_CXX_FLAGS "-fPIC -g")
 include_directories("../..")
 
 # test triangle
-set(TRIANGLE_FILE
-        task2-1_test_triangle.cc)
+set(TRIANGLE_FILE task2-1_test_triangle.cc )
 add_executable(task2-1_test_triangle ${TRIANGLE_FILE})
 target_link_libraries(task2-1_test_triangle sfm util core)
 
