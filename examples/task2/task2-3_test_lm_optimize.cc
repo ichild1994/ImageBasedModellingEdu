@@ -158,16 +158,16 @@ std::size_t block_size, sfm::ba::SparseMatrix<double>* B)
         std::vector<sfm::ba::DenseVector<double>> columns(block_size);
         for (std::size_t col = 0; col < block_size; ++col)
             A.column_nonzeros(block + col, &columns[col]);
-            for (std::size_t col = 0; col < block_size; ++col) {
-                double dot = columns[col].dot(columns[col]);
-                triplets.emplace_back(block + col, block + col, dot);
-                for (std::size_t row = col + 1; row < block_size; ++row) {
-                    dot = columns[col].dot(columns[row]);
-                    triplets.emplace_back(block + row, block + col, dot);
-                    triplets.emplace_back(block + col, block + row, dot);
-                }
+        for (std::size_t col = 0; col < block_size; ++col) {
+            double dot = columns[col].dot(columns[col]);
+            triplets.emplace_back(block + col, block + col, dot);
+            for (std::size_t row = col + 1; row < block_size; ++row) {
+                dot = columns[col].dot(columns[row]);
+                triplets.emplace_back(block + row, block + col, dot);
+                triplets.emplace_back(block + col, block + row, dot);
             }
         }
+    }
     B->allocate(A.num_cols(), A.num_cols());
     B->set_from_triplets(triplets);
 }
@@ -785,6 +785,9 @@ void lm_optimization(std::vector<sfm::ba::Camera>*cameras
         //3.0 根据计算得到的偏移量，重新计算冲投影误差和均方误差，用于判断终止条件和更新条件.
         double new_mse, delta_mse, delta_mse_ratio = 1.0;
 
+        // new judgement!!
+        double lm_factor = -0.1;
+
         // 正规方程求解成功的情况下
         if (cg_status.success) {
             /*重新计算相机和三维点，计算重投影误差，注意原始的相机参数没有被更新*/
@@ -794,15 +797,39 @@ void lm_optimization(std::vector<sfm::ba::Camera>*cameras
             /* 均方误差的绝对变化值和相对变化率*/
             delta_mse = current_mse - new_mse;
             delta_mse_ratio = 1.0 - new_mse / current_mse;
+
+            // new judgement!!
+            DenseVectorType g, gc, gp;
+            std::size_t const camera_cols = cameras->size() * num_cam_params;
+            std::size_t const point_cols = points->size() * 3;
+            std::size_t const jacobi_rows = observations->size() * 2;
+            gc.resize(camera_cols);
+            gp.resize(point_cols);
+            g.resize(camera_cols + point_cols);
+            gc = Jc.transpose().multiply(F);
+            gp = Jp.transpose().multiply(F);
+            for(int i = 0; i < camera_cols; ++i) {
+                g.at(i) = gc.at(i);
+            }
+            for(int i = 0; i < point_cols; ++i) {
+                g.at(i) = gp.at(i+camera_cols);
+            }
+
+            double delta_q = delta_x.dot(delta_x.multiply(1.0/trust_region_radius ).subtract(g) );
+            double delta_f = F.dot(F) - F_new.dot(F_new);
+            lm_factor = delta_f / delta_q;
+
         }
         // 正规方程求解失败的情况下
         else {
             new_mse = current_mse;
             delta_mse = 0.0;
+            delta_mse_ratio = 0.0;
         }
 
         // new_mse < current_mse表示残差值减少
-        bool successful_iteration = delta_mse > 0.0;
+        //bool successful_iteration = delta_mse > 0.0;
+        bool successful_iteration = lm_factor > 0.0;
 
         /*
          * 如果正规方程求解成功，则更新相机参数和三维点坐标，并且增大信赖域的尺寸，使得求解方式
@@ -834,7 +861,9 @@ void lm_optimization(std::vector<sfm::ba::Camera>*cameras
             }
 
             // 增大信赖域大小
-            trust_region_radius *= TRUST_REGION_RADIUS_GAIN;
+            //trust_region_radius *= TRUST_REGION_RADIUS_GAIN;
+            //if(lm_factor < 0.0001) trust_region_radius *= 0.1;
+            if(lm_factor > 0.001) trust_region_radius *= 10.0;
         }
         else {
             std::cout << "BA: #" << std::setw(2) << std::left << lm_iter
@@ -848,7 +877,8 @@ void lm_optimization(std::vector<sfm::ba::Camera>*cameras
             num_lm_iterations += 1;
             num_lm_unsuccessful_iterations += 1;
             // 求解失败的减小信赖域尺寸
-            trust_region_radius *= TRUST_REGION_RADIUS_DECREMENT;
+            //trust_region_radius *= TRUST_REGION_RADIUS_DECREMENT;
+            trust_region_radius *= 0.1;
         }
 
         /* 判断是否超过最大的迭代次数. */
@@ -857,7 +887,7 @@ void lm_optimization(std::vector<sfm::ba::Camera>*cameras
                   << lm_max_iterations << std::endl;
             break;
         }
-    }
+    }//iteration
 
     final_mse = current_mse;
 }
@@ -868,7 +898,7 @@ int main(int argc, char* argv[])
     /* 加载数据 */
     load_data("./examples/task2/test_ba.txt",cameras, points, observations);
 
-    lm_optimization(&cameras, &points, &observations);
+    //lm_optimization(&cameras, &points, &observations);
 
     // ba优化
    sfm::ba::BundleAdjustment::Options ba_opts;
