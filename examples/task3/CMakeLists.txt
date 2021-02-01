@@ -1,6 +1,6 @@
 project(class4)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "-fPIC")
+set(CMAKE_CXX_FLAGS "-fPIC -g")
 
 include_directories("../..")
 
