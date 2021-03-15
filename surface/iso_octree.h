@@ -42,7 +42,7 @@ public:
 
     // Returns the map of computed voxels.
     VoxelVector const& get_voxels (void) const;
-
+    VoxelVector& get_voxels (void);
 
 
 private:
@@ -80,6 +80,12 @@ IsoOctree::clear_voxel_data (void)
 
 inline IsoOctree::VoxelVector const&
 IsoOctree::get_voxels (void) const
+{
+    return this->voxels;
+}
+
+inline IsoOctree::VoxelVector&
+IsoOctree::get_voxels (void)
 {
     return this->voxels;
 }

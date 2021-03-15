@@ -68,6 +68,32 @@ Octree::Node*
 Octree::Iterator::next_bread_first(void)
 {
     /*todo implement bread first search here*/
+    Octree::Node* cur_parent = this->current->parent;
+    if(cur_parent == nullptr) {
+        return this->next_node();
+    }
+    Octree::Node* temp = current;
+    int _depth = this->level;
+    while(temp->parent != nullptr) {
+        if(temp - temp->parent->children == 7){
+            temp = temp->parent;
+        }
+        else {
+            temp++;
+        }
+    }
+    while(_depth < this->level) {
+        temp = temp->children;
+        _depth++;
+    }
+    if(this->path == (1<<(3*this->level))-1) {
+        temp = temp->children;
+        this->level++;
+    }
+    this->current = temp;
+    this->path++;
+
+    return this->current;
 
 }
 
